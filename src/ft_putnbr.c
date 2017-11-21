@@ -14,9 +14,9 @@
 
 void	ft_putnbr(int n)
 {
-	//
+	
 	// REFACTOR THIS!
-	//
+	
 	if (n == -2147483648)
 		ft_putstr("-2147483648");
 	else if (n < 0)
@@ -31,4 +31,14 @@ void	ft_putnbr(int n)
 	}
 	else
 		ft_putchar(n + '0');
+
+	// if (n < 0)
+	// 	ft_putchar('-');
+	// if (ABS(n) >= 0 && ABS(n) <= 9)
+	// 	ft_putchar(ABS(n) + '0');
+	// else
+	// {
+	// 	ft_putnbr(ABS(n / 10));
+	// 	ft_putchar(ABS(n % 10) + '0');
+	// }
 }
