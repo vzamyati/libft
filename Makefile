@@ -66,7 +66,10 @@ SRC_FILES =	ft_putchar.c \
 			ft_strsub.c \
 			ft_strjoin.c \
 			ft_strtrim.c \
-
+			ft_itoa.c \
+			ft_strsplit.c \
+			ft_lstnew.c \
+			ft_lstdelone.c
 
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))
 OBJ = $(SRC:.c=.o)

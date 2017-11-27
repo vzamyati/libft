@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vzamyati <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/30 14:31:49 by vzamyati          #+#    #+#             */
-/*   Updated: 2017/11/01 14:18:29 by vzamyati         ###   ########.fr       */
+/*   Created: 2017/11/27 21:48:28 by vzamyati          #+#    #+#             */
+/*   Updated: 2017/11/27 21:48:30 by vzamyati         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <unistd.h>
 
-void	ft_putstr(char const *str)
+t_list 	*ft_lstnew(void const *content, size_t content_size)
 {
-	int i;
+	t_list *new;
 
-	i = 0;
-	if (str)
-		while (str[i])
-		{
-			write(1, &str[i], 1);
-			i++;
-		}
-}
-
-
-int 	main()
-{
-	char s[] = "My name is Lera";
-	ft_putstr(s);
+	if (!(new = (t_list *)malloc(sizeof(t_list))))
+		return (NULL);
+	if (!content)
+	{
+		new->content = NULL;
+		new->content_size = 0;
+	}
+	else
+	{
+		if (!(new->content = (void *)malloc(content_size)))
+			return (NULL);
+		ft_memcpy(new->content, content, content_size);
+		new->content_size = content_size;
+	}
+	new->next = NULL;
+	return (new);
 }
