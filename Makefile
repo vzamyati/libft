@@ -13,9 +13,6 @@
 FLAGS = -Wall -Werror -Wextra
 NAME = libft.a
 
-SRC_DIR = src/
-INCLUDE_DIR = includes/
-
 SRC_FILES =	ft_putchar.c \
 			ft_putendl.c \
 			ft_putnbr.c \
@@ -30,9 +27,14 @@ SRC_FILES =	ft_putchar.c \
 			ft_isdigit.c \
 			ft_isalnum.c \
 			ft_isascii.c \
+			ft_isspace.c \
 			ft_isprint.c \
+			ft_islower.c \
+			ft_isupper.c \
 			ft_toupper.c \
 			ft_tolower.c \
+			ft_power.c \
+			ft_factorial.c \
 			ft_putchar_fd.c \
 			ft_putstr_fd.c \
 			ft_putendl_fd.c \
@@ -69,23 +71,23 @@ SRC_FILES =	ft_putchar.c \
 			ft_itoa.c \
 			ft_strsplit.c \
 			ft_lstnew.c \
-			ft_lstdelone.c
+			ft_lstdelone.c \
+			ft_lstdel.c \
+			ft_lstadd.c \
+			ft_lstiter.c \
+			ft_lstmap.c \
+			ft_lstlen.c 
 
-SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))
-OBJ = $(SRC:.c=.o)
-
-MAIN = ./main.c
+OBJ = $(SRC_FILES:.c=.o)
 
 all: $(NAME)
 
-.c.o: $(SRC)
-	gcc $(FLAGS) -I $(INCLUDE_DIR) -c $< -o $@
+.c.o: $(SRC_FILES)
+	@gcc $(FLAGS) -c $< -o $@
 
 $(NAME): $(OBJ)
-	# gcc $(FLAGS) -I $(INCLUDE_DIR) -c $(SRC)
 	ar rc $(NAME) $(OBJ)
-	# !!!!!!!!!!!!!!!
-	gcc $(FLAGS) $(MAIN) -I $(INCLUDE_DIR) -L . -lft
+	ranlib $(NAME)
 
 clean:
 	/bin/rm -f $(OBJ)
